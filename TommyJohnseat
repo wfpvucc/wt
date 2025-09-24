@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tommy John's Pizzeria — Morrisville, PA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#b71c1c;
+      --gold:#f6b042;
+      --cream:#fff8f0;
+      --dark:#222;
+      --muted:#666;
+      --container:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:var(--dark);
+      background:linear-gradient(180deg,#fff 0%,#fffaf6 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .wrap{max-width:var(--container);margin:0 auto;padding:18px;}
+    header{
+      position:sticky; top:0; z-index:40;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(4px);
+      border-bottom:1px solid #eee;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:64px;height:64px;border-radius:10px;overflow:hidden;flex:0 0 64px;
+      box-shadow:0 6px 18px rgba(183,28,28,0.12);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand h1{font-family:Oswald, sans-serif;margin:0;font-size:20px;color:var(--red);letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px}
+    .cta{background:var(--red);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700}
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:18px;margin:18px 0;padding:22px;border-radius:12px;overflow:hidden;
+      background:linear-gradient(90deg, rgba(183,28,28,0.04), rgba(246,176,66,0.03));
+    }
+    .hero-inner{display:flex;flex-direction:column;gap:12px;align-items:flex-start;justify-content:center}
+    .hero h2{font-family:Oswald, sans-serif;margin:0;font-size:36px;color:var(--red)}
+    .hero p{margin:0;color:var(--muted);font-size:16px}
+    .hero-actions{display:flex;gap:12px;margin-top:8px}
+    .btn{padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--red);color:#fff}
+    .btn-ghost{background:transparent;border:2px solid var(--red);color:var(--red)}
+    .hero-media{width:100%;height:220px;border-radius:10px;overflow:hidden}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:16px}
+    .panel{background:white;border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(12,12,12,0.03)}
+    .two{display:grid;grid-template-columns:1fr 380px;gap:18px}
+    .menu-section h3{font-family:Oswald;font-size:20px;margin:0 0 10px}
+    .item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #f0f0f0}
+    .item .name{font-weight:600}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* Friday callout */
+    .callout{background:linear-gradient(90deg,var(--red),#ff7043);color:white;padding:16px;border-radius:10px;display:flex;align-items:center;gap:16px}
+    .callout .badge{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:8px;font-weight:700}
+    .special-price{font-family:Oswald;font-size:28px;margin:0}
+    .subl{font-size:14px;color:rgba(255,255,255,0.95)}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+
+    footer{margin-top:18px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media(min-width:880px){
+      .grid{grid-template-columns:2fr 1fr}
+      .hero{grid-template-columns:1fr 420px}
+    }
+    @media(max-width:680px){
+      .two{grid-template-columns:1fr}
+      nav ul{display:none}
+      .nav .menu-toggle{display:block}
+      .hero-media{height:200px}
+      .gallery img{height:100px}
+    }
+
+    /* mobile nav collapse */
+    .mobile-nav{display:none;padding:12px;background:white;border-top:1px solid #eee}
+    .mobile-nav a{display:block;padding:10px 0;border-bottom:1px solid #f3f3f3;color:var(--dark);text-decoration:none}
+    .show{display:block}
+    .map-embed{width:100%;height:260px;border-radius:8px;border:0}
+    table.prices{width:100%;border-collapse:collapse}
+    table.prices td{padding:6px 0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo"><img src="https://source.unsplash.com/800x800/?pizza,oven" alt="Tommy John's"></div>
+        <div>
+          <h1>Tommy John's Pizzeria</h1>
+          <p class="muted">411 W Bridge St, Morrisville, PA • (267) 833-3911</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#specials">Specials</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <a class="cta" href="#order">Order Online</a>
+        <button class="menu-toggle btn" aria-expanded="false" onclick="toggleMobileNav()">☰</button>
+      </div>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav" style="display:none">
+      <a href="#menu">Menu</a>
+      <a href="#specials">Specials</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#order">Order Online</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero panel" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h2 id="hero-title">Crafting Memories, One Slice at a Time 🍕</h2>
+        <p class="muted">Family-owned. Community-first. Fresh ingredients and bold flavors — right here in Morrisville.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="order" href="tel:+12678333911">Call to Order: (267) 833-3911</a>
+          <a class="btn btn-ghost" href="#menu">View Menu</a>
+        </div>
+
+        <div style="margin-top:12px">
+          <small class="muted">Hours: Tue–Sun 11am–9pm • Closed Monday</small>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="https://source.unsplash.com/1200x900/?pepperoni-pizza,cheese" alt="Tommy John's pizza">
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel" id="menu">
+        <div class="two">
+          <div>
+            <h3 class="menu-section">Pizza Slices</h3>
+            <div class="item"><div class="name">Cheese (slice)</div><div>$2.25</div></div>
+            <div class="item"><div class="name">BBQ (slice)</div><div>$2.50</div></div>
+            <div class="item"><div class="name">Meat Lovers (slice)</div><div>$2.50</div></div>
+            <div class="item"><div class="name">Pepperoni (slice)</div><div>$2.50</div></div>
+            <div class="item"><div class="name">Veggie (slice)</div><div>$2.25</div></div>
+
+            <h3 class="menu-section" style="margin-top:14px">Special Sales (Slices + Soda)</h3>
+            <div class="item"><div>2 Cheese Slices + Soda</div><div>$5</div></div>
+            <div class="item"><div>2 BBQ Slices + Soda</div><div>$7</div></div>
+            <div class="item"><div>2 Meat Lovers + Soda</div><div>$7</div></div>
+            <div class="item"><div>2 Pepperoni Slices + Soda</div><div>$7</div></div>
+            <div class="item"><div>2 Veggie Slices + Soda</div><div>$7</div></div>
+
+            <h3 class="menu-section" style="margin-top:14px">Whole Pizzas</h3>
+            <table class="prices">
+              <tr><td>BBQ Pizza</td><td>14” $18 / 16” $20</td></tr>
+              <tr><td>Cheese Pizza</td><td>14” $14 / 16” $16</td></tr>
+              <tr><td>Meat Lovers</td><td>14” $18 / 16” $20</td></tr>
+              <tr><td>Pepperoni</td><td>14” $14 / 16” $16</td></tr>
+              <tr><td>Veggie</td><td>14” $16 / 16” $18</td></tr>
+            </table>
+
+            <h3 class="menu-section" style="margin-top:14px">Sandwiches</h3>
+            <div class="item"><div>BBQ Cheesesteak</div><div>$12</div></div>
+            <div class="item"><div>BBQ Cheesesteak w/ Mushrooms</div><div>$12</div></div>
+            <div class="item"><div>Chicken Cheesesteak</div><div>$10</div></div>
+
+            <h3 class="menu-section" style="margin-top:14px">Burgers</h3>
+            <div class="item"><div>Tommy Johns Flat Burger D</div><div>$11</div></div>
+            <div class="item"><div>Tommy Johns Flat Burger S</div><div>$8</div></div>
+            <div class="item"><div>Chicken Burger</div><div>$8</div></div>
+            <div class="item"><div>Brisket Burger</div><div>$12</div></div>
+            <div class="item"><div>BBQ Combo Burger</div><div>$16</div></div>
+          </div>
+
+          <aside>
+            <div class="callout" role="region" aria-label="Friday special">
+              <div style="flex:1">
+                <div class="badge">FRIDAY SPECIAL</div>
+                <p class="special-price">$10</p>
+                <p class="subl">Large pizzas every Friday — originally $18–$20. <strong>Up to 50% OFF</strong></p>
+              </div>
+              <div style="min-width:110px;text-align:center">
+                <img src="https://source.unsplash.com/400x300/?large-pizza" alt="Friday deal" style="width:100%;height:90px;object-fit:cover;border-radius:8px">
+                <a href="#order" class="btn btn-primary" style="display:inline-block;margin-top:8px">Order Now</a>
+              </div>
+            </div>
+
+            <div style="margin-top:16px" class="panel">
+              <h3 class="menu-section">Meat Sets & Combos</h3>
+              <div class="item"><div>Beef Ribs</div><div>$25</div></div>
+              <div class="item"><div>Beef Brisket (w/ potatoes & toast)</div><div>$20</div></div>
+              <div class="item"><div>Chicken BBQ Drumsticks (5 + fries)</div><div>$15</div></div>
+              <div class="item"><div>Mega BBQ Set (for 4)</div><div>$85</div></div>
+
+              <h3 class="menu-section" style="margin-top:12px">Appetizers & Sides</h3>
+              <div class="item"><div>Chicken Wings</div><div>6 $8 / 12 $14 / 24 $26</div></div>
+              <div class="item"><div>Chicken Fingers</div><div>$10</div></div>
+              <div class="item"><div>Garlic Bread</div><div>$5</div></div>
+              <div class="item"><div>Mozzarella Sticks (6)</div><div>$7</div></div>
+              <div class="item"><div>Onion Rings</div><div>$7</div></div>
+              <div class="item"><div>Cajun Fries</div><div>$5</div></div>
+              <div class="item"><div>French Fries</div><div>$4</div></div>
+
+              <h3 class="menu-section" style="margin-top:12px">Drinks & Sauces</h3>
+              <div class="item"><div>All beverages</div><div>$2.50</div></div>
+              <div class="item"><div>Water</div><div>$1</div></div>
+              <div class="item"><div>Sauces</div><div>BBQ, Ranch</div></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <aside class="panel" id="specials">
+        <h3>Why Tommy John's?</h3>
+        <p class="muted">We’re a family-owned pizzeria rooted in Morrisville. Fresh dough, classic sauces, and bold BBQ flavors. Quick pickup, friendly service, and a local vibe.</p>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid #f3f3f3">
+
+        <h3>Gallery</h3>
+        <div class="gallery" id="gallery">
+          <img src="https://source.unsplash.com/600x400/?pizza,cheesy" alt="">
+          <img src="https://source.unsplash.com/600x400/?bbq,meat" alt="">
+          <img src="https://source.unsplash.com/600x400/?wings,fried" alt="">
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid #f3f3f3">
+
+        <h3>Quick Links</h3>
+        <p><a href="#order" class="btn btn-primary" style="padding:8px 12px;font-size:14px">Call to Order</a></p>
+        <p class="muted">Scan QR in-store for contactless pickup.</p>
+      </aside>
+    </div>
+
+    <section class="panel" id="contact" style="margin-top:18px">
+      <h3>Contact & Location</h3>
+      <p class="muted">Tommy John's Pizzeria<br>411 W Bridge St, Morrisville, PA 19067<br>Phone: (267) 833-3911</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <iframe class="map-embed" loading="lazy" src="https://www.google.com/maps?q=40.204479,-74.781823&output=embed" title="Tommy John's location"></iframe>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="tel:+12678333911">Call (267) 833-3911</a>
+          <a class="btn btn-ghost" href="https://maps.apple.com/place?address=411%20W%20Bridge%20St,%20Morrisville,%20PA%20%2019067,%20United%20States&coordinate=40.204479,-74.781823&name=Tommy%20Johns%20Pizzeria" target="_blank">Get Directions</a>
+          <a class="btn" href="mailto:info@tommyjohnspizzeria.com" style="background:#f3f3f3;border-radius:8px">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted">© <strong>Tommy John's Pizzeria</strong> • 411 W Bridge St, Morrisville, PA • (267) 833-3911</div>
+    </footer>
+  </main>
+
+  <script>
+    function toggleMobileNav(){
+      const nav = document.getElementById('mobileNav');
+      const btn = document.querySelector('.menu-toggle');
+      if(nav.style.display === 'none' || nav.style.display === ''){
+        nav.style.display = 'block';
+        btn.setAttribute('aria-expanded','true');
+      } else {
+        nav.style.display = 'none';
+        btn.setAttribute('aria-expanded','false');
+      }
+    }
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+
+    // small touch: auto-close mobile nav on link click (mobile)
+    document.querySelectorAll('#mobileNav a').forEach(a=>{
+      a.addEventListener('click', ()=> {
+        document.getElementById('mobileNav').style.display = 'none';
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded','false');
+      });
+    });
+  </script>
+</body>
+</html>
